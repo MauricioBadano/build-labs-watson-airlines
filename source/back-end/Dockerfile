@@ -21,5 +21,7 @@ COPY . .
 # Stage 2: Application Running
 # ------------------------------
 
+EXPOSE 3000
+
 # Run application
 CMD [ "node", "app.js" ]
