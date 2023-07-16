@@ -1,12 +1,17 @@
 const Flight = require("./flightSchema");
 
 async function flightSearchDO(destinationId,originId){
-    const vuelos = await Flight.find({DESTINATION_AIRPORT: destinationId, ORIGIN_AIRPORT: originId});
-    return vuelos;
+    const flights = await Flight.find({DESTINATION_AIRPORT: destinationId, ORIGIN_AIRPORT: originId});
+    return flights;
 }
 
 async function flightSearchAD(airline,date){
-    const vuelos = await Flight.find({DEPARTURE_DATE: date, AIRLINE: airline});
-    return vuelos;
+    const flights = await Flight.find({DEPARTURE_DATE: date, AIRLINE: airline});
+    return flights;
 }
-module.exports = {flightSearchDO,flightSearchAD};
+
+async function flightSearchID(id){
+    const flights = await Flight.findById(id);
+    return flights;
+}
+module.exports = {flightSearchDO,flightSearchAD,flightSearchID};

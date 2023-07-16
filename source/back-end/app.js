@@ -13,7 +13,7 @@ async function main(){
     const { create_connection } = require("./mongodb.js");
     await create_connection();  
     const app = express();
-    const port = 3000;
+    const port = 8080;
     app.get("/airlines", async (req,res)=> {
         try {
             const aerolineas = await airlines.allAirlines();
@@ -62,6 +62,11 @@ async function main(){
         }
     })
 
+    app.get("/flightsid/:id",async (req,res)=> {
+        const id = req.params.id;
+        const flightslist=await flights.flightSearchID(id);
+        res.json(flightslist)
+    })
     app.listen(port, () => {console.log("escuchando")})
 }
 
