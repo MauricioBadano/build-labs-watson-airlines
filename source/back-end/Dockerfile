@@ -12,6 +12,8 @@ WORKDIR /usr/src/app
 
 # Install dependencies
 COPY package*.json ./
+COPY . /usr/src/app/
+
 RUN npm install
 
 # ------------------------------
