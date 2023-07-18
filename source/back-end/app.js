@@ -1,9 +1,8 @@
 const express = require("express");
 const path = require("path");
+const cors = require("cors");
 const airlines = require("./airlinesController");
 const flights = require("./flightsController")
-const Flight = require("./flightSchema.js");
-const { log } = require("console");
 async function main(){
 
     // Get global variables from .env file
@@ -14,6 +13,8 @@ async function main(){
     await create_connection();  
     const app = express();
     const port = 8080;
+    app.use(cors());
+    
     app.get("/airlines", async (req,res)=> {
         try {
             const aerolineas = await airlines.allAirlines();
