@@ -18,8 +18,7 @@ async function main(){
     app.get("/airlines", async (req,res)=> {
         try {
             const aerolineas = await airlines.allAirlines();
-            const airlinesList = aerolineas.map((aerolinea) => aerolinea.AIRLINE);
-            res.json(airlinesList); // Enviar solo las aerolineas como respuesta JSON al cliente
+            res.json(aerolineas); // Enviar solo las aerolineas como respuesta JSON al cliente
         } 
         catch (error) {
             console.error(error);
